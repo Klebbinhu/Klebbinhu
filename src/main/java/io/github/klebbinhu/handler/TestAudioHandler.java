@@ -18,13 +18,13 @@ public class TestAudioHandler implements AudioSendHandler {
     private final AudioPlayer player;
     private AudioFrame lastFrame;
 
-    public TestAudioHandler() {
+    public TestAudioHandler(String link) {
         AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
         this.player = playerManager.createPlayer();
         TrackScheduler trackScheduler = new TrackScheduler(player);
         player.addListener(trackScheduler);
-        playerManager.loadItem("https://www.youtube.com/watch?v=ZRtdQ81jPUQ", new AudioLoadResultHandler() {
+        playerManager.loadItem(link, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack audioTrack) {
                 player.playTrack(audioTrack);
