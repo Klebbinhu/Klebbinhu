@@ -14,17 +14,23 @@ public class TestListener extends ListenerAdapter {
         if(e.getAuthor().isBot() ||!e.isFromGuild()){
             return;
         }
-        if(e.getMessage().getContentRaw().startsWith("!play")){
+        Message message = e.getMessage();
+        String content = message.getContentRaw();
+
+        if(content.equals("!play")){
             Guild guild = e.getGuild();
             VoiceChannel vc = guild.getVoiceChannelById("952948011548438598");
             AudioManager am = guild.getAudioManager();
             am.openAudioConnection(vc);
         }
-        Message message = e.getMessage();
-        String content = message.getContentRaw();
+
         if (content.equals("!ping")){
             MessageChannel channel = e.getChannel();
             channel.sendMessage("pong!").queue();
+        }
+        if(content.equals("Feio")){
+            MessageChannel channel = e.getChannel();
+            channel.sendMessage("Tu es").queue();
         }
     }
 
