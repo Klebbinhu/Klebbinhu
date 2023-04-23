@@ -1,6 +1,6 @@
-package io.github.klebbinhu.rpg;
+package io.github.klebbinhu.rpg.player;
 
-public enum Atributos {
+public enum Atributo {
     /**
      * Strength - measuring physical power and carrying capacity
      * Constitution - measuring endurance, stamina and good health
