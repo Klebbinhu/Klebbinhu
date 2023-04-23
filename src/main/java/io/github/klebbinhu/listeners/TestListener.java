@@ -1,5 +1,6 @@
 package io.github.klebbinhu.listeners;
 
+import io.github.klebbinhu.handler.TestAudioHandler;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.VoiceChannel;
@@ -21,6 +22,7 @@ public class TestListener extends ListenerAdapter {
             Guild guild = e.getGuild();
             VoiceChannel vc = guild.getVoiceChannelById("952948011548438598");
             AudioManager am = guild.getAudioManager();
+            am.setSendingHandler(new TestAudioHandler());
             am.openAudioConnection(vc);
         }
 
