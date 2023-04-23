@@ -1,4 +1,4 @@
-package io.github.klebbinhu.music;
+package io.github.klebbinhu.musicv2;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.playback.AudioFrame;
@@ -6,18 +6,18 @@ import net.dv8tion.jda.api.audio.AudioSendHandler;
 
 import java.nio.ByteBuffer;
 
-public class AudioHandler implements AudioSendHandler {
+public class AudioProvider implements AudioSendHandler {
 
-    private final AudioPlayer audioPlayer;
+    private final AudioPlayer player;
     private AudioFrame lastFrame;
 
-    public AudioHandler(AudioPlayer audioPlayer) {
-        this.audioPlayer = audioPlayer;
+    public AudioProvider(AudioPlayer player) {
+        this.player = player;
     }
 
     @Override
     public boolean canProvide() {
-        this.lastFrame = this.audioPlayer.provide();
+        this.lastFrame = this.player.provide();
         return this.lastFrame != null;
     }
 
