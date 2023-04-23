@@ -24,7 +24,7 @@ public class LavaAudioPlayer extends AudioEventAdapter {
 
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
-        if (this.scheduler.hasNext())
+        if (this.scheduler.hasNext() && endReason == AudioTrackEndReason.FINISHED)
             playNext();
     }
 
@@ -54,7 +54,7 @@ public class LavaAudioPlayer extends AudioEventAdapter {
 
     public void playNext() {
         AudioTrack nextTrack = this.scheduler.next();
-        this.player.playTrack(nextTrack);
+        this.player.startTrack(nextTrack, false);
     }
 
     public AudioPlayer getPlayer() {

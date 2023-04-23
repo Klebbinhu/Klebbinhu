@@ -83,7 +83,10 @@ public class MusicController {
     }
 
     public void skip() {
-        audioPlayer.playNext();
+        if (this.scheduler.hasNext())
+            audioPlayer.playNext();
+        else
+            stop();
     }
 
     public void stop() {

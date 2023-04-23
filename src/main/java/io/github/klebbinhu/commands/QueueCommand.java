@@ -46,7 +46,9 @@ public class QueueCommand extends AbstractCommand {
                     .append(". ")
                     .append(track.getInfo().title)
                     .append("\n");
+            position++;
         }
+        sb.setLength(4000);
         if (this.klebbinhuBot.getMusicController().isPlaying()) {
             sb.append("\nA tocar: **")
                     .append(this.klebbinhuBot.getMusicController().getPlaying().getInfo().title)
