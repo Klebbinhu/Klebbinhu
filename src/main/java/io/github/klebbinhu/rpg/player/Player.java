@@ -1,12 +1,13 @@
 package io.github.klebbinhu.rpg.player;
 import io.github.klebbinhu.collections.Pair;
+import net.dv8tion.jda.api.entities.User;
 
 import java.util.ArrayList;
 
 
 public class Player {
-    private final String name;
-    private final int  id;
+
+    private final User user;
     private int level;
     private ArrayList<Pair<Atributo, Integer>> atributos;
     private int xp;
@@ -17,9 +18,8 @@ public class Player {
 
     private ArrayList<Skill> skills;
 
-    public Player(String name, int id){
-        this.id = id;
-        this.name = name;
+    public Player(User user){
+        this.user = user;
         this.level = 0;
         this.xp = 0;
         this.necXp = 100;
@@ -95,9 +95,6 @@ public class Player {
         this.xp += quantity;
     }
 
-    public String getName() {
-        return this.name;
-    }
 
     public int getLevel() {
         return this.level;
@@ -109,10 +106,6 @@ public class Player {
 
     public ArrayList<Pair<Atributo, Integer>> getAtributos() {
         return this.atributos;
-    }
-
-    public int getId() {
-        return this.id;
     }
 
     public int getNecXp() {
@@ -128,20 +121,33 @@ public class Player {
         return -1;
     }
 
+    public int getDano() {
+        return dano;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public int getRemainingSkillPoints() {
+        return remainingSkillPoints;
+    }
+
     public ArrayList<Skill> getSkills() {
         return skills;
     }
 
     @Override
     public String toString() {
-        return "Player(" +
-                 name + '\'' +
-                ", id=" + id +
+        return "Player{" +
+                "user=" + user +
                 ", level=" + level +
-                "," + atributos +
+                ", atributos=" + atributos +
                 ", xp=" + xp +
                 ", necXp=" + necXp +
-                ", remainingSkillPoints=" + remainingSkillPoints + ", skills= " + skills +
-                ')';
+                ", remainingSkillPoints=" + remainingSkillPoints +
+                ", dano=" + dano +
+                ", skills=" + skills +
+                '}';
     }
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public final class KlebbinhuMain {
 
     public static void main(String[] args) {
-        File tokenFile = new File("token.txt");
+        File tokenFile = new File("src/token.txt");
         if (!tokenFile.exists()) {
             System.err.println("No token file (token.txt) found!");
             System.exit(1);
