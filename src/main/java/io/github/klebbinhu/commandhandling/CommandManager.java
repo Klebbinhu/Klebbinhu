@@ -1,6 +1,7 @@
 package io.github.klebbinhu.commandhandling;
 
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
 
@@ -12,15 +13,15 @@ public class CommandManager {
 
     private final HashMap<String, CommandHandler> handlerMap = new HashMap<>();
     private final List<SlashCommandData> toRegister = new ArrayList<>();
-    private final JDA jda;
+    private final JDABuilder jdaBuilder;
 
-    public CommandManager(JDA jda) {
-        this.jda = jda;
-        this.jda.addEventListener(new CommandListener(this));
+    public CommandManager(JDABuilder jdaBuilder) {
+        this.jdaBuilder = jdaBuilder;
+        this.jdaBuilder.addEventListeners(new CommandListener(this));
     }
+
     public void register(SlashCommandData commandData, CommandHandler handler) {
         this.handlerMap.put(commandData.getName(), handler);
-//        this.jda.updateCommands().addCommands(commandData).queue();
         toRegister.add(commandData);
     }
 
@@ -28,8 +29,8 @@ public class CommandManager {
         register(command.getCommand(), command);
     }
 
-    public void addAll() {
-        this.jda.updateCommands().addCommands(toRegister).queue();
+    public void submit(JDA jda) {
+        jda.updateCommands().addCommands(toRegister).queue();
     }
 
     void dispatchCommand(String name, SlashCommandInteractionEvent event) {
