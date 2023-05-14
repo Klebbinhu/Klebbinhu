@@ -39,3 +39,5 @@ build/
 
 ### BOT TOKEN ###
 src/main/resources/token.txt
+
+.idea/
