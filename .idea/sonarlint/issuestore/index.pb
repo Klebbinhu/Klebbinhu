@@ -52,8 +52,6 @@ j
 :src/main/java/io/github/klebbinhu/music/AudioProvider.java,3\e\3e46281f6d567a59e47a357281650d2d518e7581
 j
 :src/main/java/io/github/klebbinhu/webpanel/HttpServer.java,1\d\1d5390a4f6b7eadea4f3fb91aa6ff73d10a6cab1
-d
-4src/main/java/io/github/klebbinhu/KlebbinhuMain.java,d\c\dccd3a64e42ecd5017e1defaf21929fea08e9e36
 q
 Asrc/main/java/io/github/klebbinhu/commands/music/PlayCommand.java,d\4\d41c650e7f3670c053f3f297e009bad7ac4c4b53
 c
